@@ -1,43 +1,45 @@
-<script setup>  
+<script setup>
 import { ref } from 'vue'
-// import BaseButton from './components/ui/BaseButton.vue'
-// import BaseInput from './components/ui/BaseInput.vue'
-import BaseToast from './components/ui/BaseToast.vue'
-import { useToast } from './composables/useToast'
-import { BaseButton, BaseInput} from'./components/ui'
-const email = ref('')
-const { success, error, info } = useToast()
+import { BaseButton, BaseInput, BaseToast } from '@/components/ui'
+import { useToast } from '@/composables/useToast'
 
+const showModal = ref(false)
+const email = ref('')
+const { success, error } = useToast()
 </script>
 
 <template>
-<h3>BaseButton</h3>
-<BaseButton>Primary Button</BaseButton>
-<BaseButton variant="secondary">Secondary Button</BaseButton>
-<BaseButton variant="danger">Delete</BaseButton>
-<BaseButton size="lg" loading>Saving...</BaseButton>
-<hr>
-<h3>BaseInput</h3>
-  <BaseInput
-    v-model="email"
-    label="Email"
-    placeholder="Enter your email"
-    hint="We'll never share your email."
-  />
-  <p>Email: {{ email }}</p>
-  <BaseButton>
-    Submit
-  </BaseButton>
-  <hr>
-<h3>BaseToast + useToast</h3>
-  <BaseButton @click="success('This is a success message!')">Show Success Toast</BaseButton>
-  <BaseButton variant="secondary" @click="error('This is an error message!')">Show Error Toast</BaseButton>
-  <BaseButton variant="danger" @click="info('This is an info message!')">Show Info Toast</BaseButton>
-  <BaseToast />
-  <hr>
-<h3>Index Export:</h3>
- <BaseButton>Test Button</BaseButton>
- <BaseInput placeholder="Test input"/>
+  <div class="page">
+    <h1>Component Library Demo</h1>
 
-  
+    <BaseCard>
+      <template #header><h2>Buttons</h2></template>
+      <BaseButton variant="primary">Primary</BaseButton>
+      <BaseButton variant="secondary">Secondary</BaseButton>
+      <BaseButton variant="danger">Danger</BaseButton>
+      <BaseButton variant="ghost">Ghost</BaseButton>
+      <BaseButton loading>Loading</BaseButton>
+    </BaseCard>
+
+    <BaseCard>
+      <template #header><h2>Form</h2></template>
+      <BaseInput v-model="email" label="Email" placeholder="you@example.com" />
+      <BaseButton @click="success('Form submitted!')">Submit</BaseButton>
+      <BaseButton variant="danger" @click="error('Something failed.')">Trigger error</BaseButton>
+    </BaseCard>
+
+    <BaseCard>
+      <template #header><h2>Modal</h2></template>
+      <BaseButton @click="showModal = true">Open modal</BaseButton>
+      <BaseModal v-model="showModal" title="Edit Profile">
+        <p>Modal content here</p>
+      </BaseModal>
+    </BaseCard>
+
+    <BaseToast />
+  </div>
 </template>
+
+<style scoped>
+.page { max-width: 720px; margin: 2rem auto; padding: 0 1rem; display: grid; gap: 1.5rem; }
+</style>
