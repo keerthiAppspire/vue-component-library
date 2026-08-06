@@ -3,7 +3,7 @@
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
-      <router-link :to="{ name: 'post', params: {id: 1} }">First Post</router-link>
+      <router-link to="/posts">Posts</router-link>
     </nav>
   </header>
   <main>
