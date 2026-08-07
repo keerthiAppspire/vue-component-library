@@ -14,19 +14,19 @@
     Dashboard
   </router-link>
 </nav>
-  <!-- <main>
-    <router-view />
-  </main> -->
+  <main>
+     <router-view v-slot="{ Component }">
+
+        <Transition name="fade" mode="out-in">
+
+            <component :is="Component"/>
+
+        </Transition>
+
+      </router-view>
+   </main>
   
-  <router-view v-slot="{ Component }">
-
-<Transition name="fade" mode="out-in">
-
-<component :is="Component"/>
-
-</Transition>
-
-</router-view>
+ 
  
 </template>
 <style scoped>
