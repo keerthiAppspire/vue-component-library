@@ -1,21 +1,31 @@
 <script setup>
-import { useCounterStore } from './stores/counter'
-import { storeToRefs } from 'pinia';
-const counter = useCounterStore()
-const  {count,doubled}=storeToRefs(counter)
-const {increment,reset}=counter
-</script>
-<template>
-  <h1>Count: {{ count }}</h1>
-  <h2>Doubled: {{ doubled }}</h2>
-  <div class="buttons">
-      <button @click="increment">Increment</button>
-      <button @click="reset">Reset</button>
-  </div>
-</template>
-<style scoped>
-.buttons {
-display : flex;
-gap : 5px;
+import { ref } from 'vue'
+import { useAuthStore } from './stores/auth'
+import { useCartStore } from './stores/cart'
+
+const auth = useAuthStore()
+const cart = useCartStore()
+
+const message = ref('')
+
+function handleCheckout() {
+  try {
+    cart.checkout()
+    message.value = 'Checkout successful'
+  } catch (error) {
+    message.value = error.message
+  }
 }
-</style>
+</script>
+
+<template>
+  <h1>Multiple Stores</h1>
+
+  <p>Logged in: {{ auth.isLoggedIn }}</p>
+
+  <button @click="handleCheckout">
+    Checkout
+  </button>
+
+  <p>{{ message }}</p>
+</template>
