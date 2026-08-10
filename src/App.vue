@@ -1,37 +1,18 @@
+<script setup>
+import { useCounterStore } from './stores/counter'
+const counter = useCounterStore()
+</script>
 <template>
-   <nav>
-  <router-link to="/">Home</router-link>
-
-  <router-link to="/about">
-    About
-  </router-link>
-
-  <router-link to="/posts">
-    Posts
-  </router-link>
-
-  <router-link to="/dashboard">
-    Dashboard
-  </router-link>
-</nav>
-  <main>
-     <router-view v-slot="{ Component }">
-
-        <Transition name="fade" mode="out-in">
-
-            <component :is="Component"/>
-
-        </Transition>
-
-      </router-view>
-   </main>
-  
- 
- 
+  <h1>Count: {{ counter.count }}</h1>
+  <h2>Doubled: {{ counter.doubled }}</h2>
+  <div class="buttons">
+      <button @click="counter.increment">Increment</button>
+      <button @click="counter.reset">Reset</button>
+  </div>
 </template>
 <style scoped>
-nav {
-  display: flex;
-  gap: 1rem;
+.buttons {
+display : flex;
+gap : 5px;
 }
 </style>
