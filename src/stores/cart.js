@@ -6,7 +6,7 @@ export const useCartStore = defineStore('cart', () => {
     if (!auth.isLoggedIn) {
       throw new Error('Login Required')
     }
-    console.log('Checkout successful')
+    return('Checkout successful')
   }
   return {
     checkout
