@@ -1,33 +1,36 @@
 <script setup>
-import { ref } from 'vue'
-import { useAuthStore } from './stores/auth'
-import { useCartStore } from './stores/cart'
-
-const auth = useAuthStore()
-const cart = useCartStore()
-const message = ref('')
-function handleCheckout() {
-  try {
-    cart.checkout()
-    message.value = 'Checkout successful'
-  } catch (error) {
-    message.value = error.message
-  }
+import { useOptionsCounterStore } from './stores/optionsCounter';
+const counter=useOptionsCounterStore()
+function patchCount(){
+  counter.$patch({
+    count:10
+  })
+}
+function patchMultiple(){
+  counter.$patch({
+    count:20,
+    name:'keerthi'
+  })
+}
+function reset(){
+  counter.$reset()
 }
 </script>
 <template>
-  <h1>Multiple Stores</h1>
-  <p>Logged in: {{ auth.isLoggedIn }}</p>
+  <h1>Options Store</h1>
+  <p>count:{{ counter.count }}</p>
+  <p>Doubled:{{ counter.doubled }}</p>
+  <p>Name:{{ counter.name }}</p>
   <div class="buttons">
-      <button @click="auth.login">Login</button>
-      <button @click="auth.logout">Logout</button>
-      <button @click="handleCheckout">Checkout</button>
+    <button @click="counter.increment">Increment</button>
+    <button @click="patchCount">$patch Count->10</button>
+    <button @click="patchMultiple">$patch Multiple</button>
+    <button @click="reset">$reset</button>
   </div>
-  <p>{{ message }}</p>
 </template>
 <style scoped>
 .buttons{
   display:flex;
-    gap : 5px;
+  gap:5px;
 }
 </style>
