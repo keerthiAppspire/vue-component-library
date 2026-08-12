@@ -1,19 +1,18 @@
 <script setup>
-    const posts=[
-        {id:1,title:'Vue Router 101'},
-        {id:2,title:'why pinia is great'},
-        {id:3,title:'Mastering Composables'}
-    ]
+import {onMounted} from 'vue'
+import {usePostsStore} from '@/stores/posts'
+import {storeToRefs} from 'pinia'
+const store=usePostsStore()
+const {posts,isLoading,error}=storeToRefs(store)
+onMounted(()=>store.fetchPosts({limit:5}))
 </script>
 <template>
     <section>
         <h1>Posts</h1>
-        <ul>
-            <li v-for="p in posts" :key="p.id">
-                <router-link :to="{ name:'post', params:{ id: p.id } }">
-                    {{ p.title }}
-                </router-link>"
-            </li>
+        <p v-if="isLoading">Loading....</p>
+        <p v-else-if="error">Error:{{ error.message }}</p>
+        <ul v-else>
+            <li v-for="p in posts" :key="p.id">{{ p.title }}</li>
         </ul>
     </section>
 </template>
