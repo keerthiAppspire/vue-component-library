@@ -1,34 +1,22 @@
 import axios from 'axios'
-import { useUiStore } from '@/stores/ui'
+import { useAuthStore } from '@/stores/auth'  
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  timeout: 10000,
-  headers: { 'Content-Type': 'application/json' }
-})
+  baseURL: import.meta.env.VITE_API_BASE_URL})
 
 // Request interceptor — attach token
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
-  if (token) config.headers.Authorization = `Bearer ${token}`
-  useUiStore().pendingRequests++
+api.interceptors.request.use((config)=>{
+  const auth=useAuthStore()
+  if(auth.token) config.headers.Authorization=`Bearer ${auth.token}`
   return config
 })
-
 // Response interceptor — handle errors
 api.interceptors.response.use(
-  (response) => {
-    useUiStore().pendingRequests--
-     return response
-  },
-  (error) => {
-    useUiStore().pendingRequests--
-    if (error.response?.status === 401) {
-      // token expired
-      localStorage.removeItem('token')
-      window.location.href = '/login'
+    (res)=>res,
+    (err)=>{
+      const auth=useAuthStore()
+      if(err.response?.status===401&&auth.isLoggedIn) auth.logout()
+        return Promise.reject(err)
     }
-    return Promise.reject(error)
-  }
-)
+  ) 
 
 export default api

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { useAuthStore } from '@/stores/auth'
 import HomeView from '@/views/HomeView.vue'
 
 const routes = [
@@ -8,8 +8,8 @@ const routes = [
   { path: '/about', name: 'about', component: () => import('@/views/AboutView.vue') }, // lazy
   { path: '/posts', name: 'posts', component: () => import('@/views/PostsView.vue') },
   { path: '/posts/:id', name: 'post', component: () => import('@/views/PostDetailView.vue'), props: true },
-  { path: '/login' , name: 'login', component: () => import('@/views/LoginView.vue') },
-  {path: '/dashboard', component: () => import('@/layouts/DashboardLayout.vue'),meta: { requieresAuth: true },
+  { path: '/login' , name: 'login', component: () => import('@/views/LoginView.vue'),meta:{requiresGuest:true} },
+  {path: '/dashboard', component: () => import('@/layouts/DashboardLayout.vue'),meta: { requiresAuth: true },
     children: [
       {path: '',name: 'dashboard', component: () => import('@/views/DashboardHome.vue'),meta: { title: 'DashBoard' } },
       {path: 'analytics', component: () => import('@/views/AnalyticsView.vue'), meta: { title: 'Analytics' } },
@@ -28,25 +28,24 @@ const router =  createRouter({
   routes,
   scrollBehavior(to, from, saved){
     if(saved) return saved
-    return { top: 0, behaivor: 'smooth' }
+    return { top: 0, behavior: 'smooth' }
   }
 })
-function getAuth() {
-  return{
-    isLoggedIn: !!localStorage.getItem('token'),
-    role: JSON.parse(localStorage.getItem('user') || 'null')?.role
-  }
-}
-router.beforeEach((to)=>{
-  const auth = getAuth()
-  if (to.meta.requieresAuth && !auth.isLoggedIn){
+router.beforeEach(async(to)=>{
+  const auth = useAuthStore()
+  
+  if (to.meta.requiresAuth && !auth.isLoggedIn){
     return { name: 'login', query: { redirect: to.fullPath } }
   }
-  if (to.meta.roles && !to.meta.roles.includes(auth.role)) {
+  if(to.meta.requiresGuest&&auth.isLoggedIn){
+    return{name:'dashboard'}
+  }
+  if (to.meta.roles && !to.meta.roles.includes(auth.user?.role)) {
     return { name: 'forbidden' }
   }
 })
 router.afterEach((to) => {
   document.title = to.meta.title ? `${to.meta.title}-App` : 'App'
 })
+
 export default router

@@ -1,3 +1,7 @@
+<script setup>
+import { useAuthStore } from '@/stores/auth';
+const auth=useAuthStore()
+</script>
 <template>
     <div class="layout">
         <aside class="sidebar">
@@ -7,6 +11,7 @@
                 <router-link to="/dashboard/analytics">Analytics</router-link>
                 <router-link to="/dashboard/admin">Admin</router-link>
             </nav>
+            <button @click="auth.logout()">Logout</button>
         </aside>
         <main>
             <router-view v-slot="{Component}">
