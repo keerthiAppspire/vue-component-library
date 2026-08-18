@@ -33,11 +33,12 @@ const router =  createRouter({
 })
 router.beforeEach(async(to)=>{
   const auth = useAuthStore()
+
   
   if (to.meta.requiresAuth && !auth.isLoggedIn){
     return { name: 'login', query: { redirect: to.fullPath } }
   }
-  if(to.meta.requiresGuest&&auth.isLoggedIn){
+  if(to.meta.requiresGuest && auth.isLoggedIn){
     return{name:'dashboard'}
   }
   if (to.meta.roles && !to.meta.roles.includes(auth.user?.role)) {

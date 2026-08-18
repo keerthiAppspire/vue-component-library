@@ -14,7 +14,7 @@ api.interceptors.response.use(
     (res)=>res,
     (err)=>{
       const auth=useAuthStore()
-      if(err.response?.status===401&&auth.isLoggedIn) auth.logout()
+      if(err.response?.status===401 && auth.isLoggedIn) auth.logout()
         return Promise.reject(err)
     }
   ) 

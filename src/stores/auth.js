@@ -9,24 +9,17 @@ export const useAuthStore = defineStore('auth', () => {
   const isLoggedIn = computed(() => !!token.value)
   const isAdmin=computed(()=> user.value?.role==='admin')
   async function login({ email, password }) {
-    const { data } = await api.post('/auth/login', { email, password })
+    const { data } = await api.post('/login', { email, password })
+    setSession({
+      token: data.accessToken,
+      user: data.user
+    })
+  }
+  async function register(payload) {
+    const { data } = await api.post('/register', payload)
     setSession(data)
   }
-  // async function register(payload) {
-  //   const {data}=awit api.post('/auth/register',payload)   
-  //   setSession(data)
-  // }
 
-  // async function me() {
-  //   if(!token.value) return
-  //   try{
-  //     const {data}=await api.get('/auth/me')
-  //     user.value=data
-  //   }
-  //   catch{
-  //     logout()
-  //   }
-  // }
   function setSession({token:t,user:u}){
     token.value=t
     user.value=u
@@ -38,7 +31,7 @@ export const useAuthStore = defineStore('auth', () => {
     localStorage.removeItem('token')
     router.replace({name:'login'})
   }
-  return{user,token,isLoggedIn,isAdmin,login,logout}
+  return { user, token, isLoggedIn, isAdmin, login, register,logout }
 },
   {
     persist:{paths:['user']}

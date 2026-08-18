@@ -16,15 +16,16 @@ async function submit(){
     isSubmitting.value=true
     try{
         await auth.login(form)
-        toast.success(`welcome back,${auth.user.name}`)
+        toast.success(`welcome back,${auth.user?.email}`)
         router.replace(route.query.redirect || '/dashboard')
     }
     catch(err){
+        console.error('login error',err)
         if (err.response?.status===422){
             errors.value=err.response.data.errors
         }
         else{
-            toast.error(err.response.data?.message||'Login failed')
+            toast.error(err.response?.data?.message||'Login failed')
         }
     }
     finally{
@@ -34,7 +35,7 @@ async function submit(){
 </script>
 <template>
     <main class="login">
-        <form @submint.prevent="submit">
+        <form @submit.prevent="submit">
             <h1>Sign in</h1>
             <BaseInput v-model="form.email" label="Email" type="email" :error=errors.email></BaseInput>
             <BaseInput v-model="form.password" label="Password" type="password" :error=errors.password></BaseInput>
