@@ -1,10 +1,7 @@
-<!-- <template>
-  <RouterView />
-</template> -->
 <script setup>
-import MinimalForm from './components/MinimalForm.vue';
+import FieldForm from './components/FieldForm.vue';
 </script>
 
 <template>
-  <MinimalForm />
+  <FieldForm />
 </template>

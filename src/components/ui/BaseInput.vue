@@ -1,28 +1,28 @@
 <script setup>
-defineProps({
-  modelValue: { type: [String, Number], default: '' },
+import { useField } from 'vee-validate';
+const props=defineProps({
+  name:{type:String,required:true},
   label:      { type: String, default: '' },
-  error:      { type: String, default: '' },
   hint:       { type: String, default: '' },
   type:       { type: String, default: 'text' },
   placeholder:{ type: String, default: '' }
 })
-defineEmits(['update:modelValue'])
+const {value,errorMessage,meta}=useField(()=>props.name)
+
 </script>
 
 <template>
   <label class="field">
     <span v-if="label">{{ label }}</span>
-    <div class="input-wrap" :class="{ error }">
-      <slot name="icon" />
+    <div class="input-wrap" :class="{ error:errorMessage }">
+      <slot name="icon" ></slot>
       <input
+      v-model="value"
         :type="type"
-        :value="modelValue"
-        :placeholder="placeholder"
-        @input="$emit('update:modelValue', $event.target.value)"
+        :placeholder="placeholder" 
       />
     </div>
-    <small v-if="error" class="msg error-msg">{{ error }}</small>
+    <small v-if="meta.touched && errorMessage" class="msg error-msg">{{ errorMessage }}</small>
     <small v-else-if="hint" class="msg">{{ hint }}</small>
   </label>
 </template>
