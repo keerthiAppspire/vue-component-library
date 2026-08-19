@@ -16,9 +16,13 @@ export const useAuthStore = defineStore('auth', () => {
     })
   }
   async function register(payload) {
-    const { data } = await api.post('/register', payload)
-    setSession(data)
-  }
+  const { data } = await api.post('/register', payload)
+
+  setSession({
+    token: data.accessToken,
+    user: data.user
+  })
+}
 
   function setSession({token:t,user:u}){
     token.value=t

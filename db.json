@@ -4,6 +4,151 @@
       "email": "test@gmail.com",
       "password": "$2a$10$F7PzNKkbJt9IXrhAiHdUNeR9ISrK0rs0jdw3dYVu5QqemVYyol81u",
       "id": 1
+    },
+    {
+      "email": "alex12@gmail.com",
+      "password": "$2a$10$dl/ag0kbA7kYDxMjGTKwCuzEAX/addOG5fgQjoQy9FeJwfLYSaMS2",
+      "id": 2
+    },
+    {
+      "email": "alex12@gmail.com",
+      "password": "$2a$10$25crWX7umu5o89Q48PGA2ODn2N9ALbWpPadjf/1z65Mb9WSCrbrum",
+      "name": "alex12",
+      "confirm": "alex1234",
+      "id": 3
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "$2a$10$fG8eLzCqRjNFn7cPjM618e/tSUirF4bQQ55sbKbj6He/h.oZe3iwy",
+      "name": "mobile",
+      "confirm": "abcd1234",
+      "id": 4
+    },
+    {
+      "email": "abcd@gmail.com",
+      "password": "$2a$10$bAHmyZuzdnwwzrhlUkaes.owJWC0Wd2vkktNI53v1dhkj3gzLyYrS",
+      "name": "abc",
+      "confirm": "abcd1234",
+      "id": 5
+    },
+    {
+      "email": "xyz@gmail.com",
+      "password": "$2a$10$r7mRtW91Wo/a95q2HqoAP./StRU6I.iK68H2OAnqcUF8WWSiP4zbi",
+      "name": "xyz",
+      "confirm": "xyz12345",
+      "id": 6
+    },
+    {
+      "email": "namme@gmail.com",
+      "password": "$2a$10$1ECkcLuuwKIEXFvQhN0n/epTBL9PvwhvZwfDAxRyptY3N9jw2NJ.y",
+      "name": "name",
+      "confirm": "name1234",
+      "id": 7
+    },
+    {
+      "email": "namme@gmail.com",
+      "password": "$2a$10$3yRigjYouHiudzMfM7fVSO40dpPVGG6z8jk6WQzucri8NyhxLs7/i",
+      "name": "name",
+      "confirm": "name1234",
+      "id": 8
+    },
+    {
+      "email": "namme@gmail.com",
+      "password": "$2a$10$LrED0QZt8ZH064//dWfDKOKcGlFptbNQNUGV8/PLWJad/kzb2.d1q",
+      "name": "name",
+      "confirm": "name1234",
+      "id": 9
+    },
+    {
+      "email": "namme@gmail.com",
+      "password": "$2a$10$LxoVk08l/ZAxk7I41SSwv.38MoyM8eSAa5p8rtDwUWsEnHIpFl3Pi",
+      "name": "name",
+      "confirm": "name1234",
+      "id": 10
+    },
+    {
+      "email": "namme@gmail.com",
+      "password": "$2a$10$00nnZzMgrzcothQ/WLEQlu395Q5zjZckAzaUNJCCDKIXDADzhQ.S.",
+      "name": "name",
+      "confirm": "name1234",
+      "id": 11
+    },
+    {
+      "email": "mail@gmail.com",
+      "password": "$2a$10$7zzmDH1wuzLdtRfqfNpA1.xplbO10uH7Wg5WXAuvBLAQ/mpldEH8q",
+      "name": "base",
+      "confirm": "12345678",
+      "id": 12
+    },
+    {
+      "email": "mail@gmail.com",
+      "password": "$2a$10$K4f762Ea5XipJtgcFOeFVeZKg8F2Wzs1GDlhRkYpULWXD5gT1BVvq",
+      "name": "base",
+      "confirm": "12345678",
+      "id": 13
+    },
+    {
+      "email": "name@gmail.com",
+      "password": "$2a$10$TZZxHfb14/zt2.9Wi.4guuui.c04u/Yluubu4QnDaV/K7llzRMQGC",
+      "name": "name",
+      "confirm": "12345678",
+      "id": 14
+    },
+    {
+      "email": "wsxe@dnm.co",
+      "password": "$2a$10$g6588u2ssZ0TZ9tIE6aPE.TP4S0AeUdNaTm1auxGsA98foEageZsu",
+      "name": "roopa",
+      "confirm": "12345678",
+      "id": 15
+    },
+    {
+      "email": "edf@dfg.ik",
+      "password": "$2a$10$Yla3M3nQX100mw2yZfvthuMYT9kK5k6CR8HScvqbqu6yyLRpOCao.",
+      "name": "efr",
+      "confirm": "0987poiu",
+      "id": 16
+    },
+    {
+      "email": "keerthi@gmil.com",
+      "password": "$2a$10$fRPYw3KcMcfUbkurB5bDfedYYRSxoOWM0jQKP2os6aDcNTIRBi11q",
+      "name": "keerthi",
+      "confirm": "1qazxsw2",
+      "id": 17
+    },
+    {
+      "email": "keerthi@gmail.com",
+      "password": "$2a$10$IDt7zT0jyEVaMxyWefEFC.tXMNiVaY/WAdhGTEtYXXxc1G4SqPJhS",
+      "name": "keerthi.p",
+      "confirm": "1qazxsw2",
+      "id": 18
+    },
+    {
+      "email": "geetha@gmail.com",
+      "password": "$2a$10$oE9DMKasBHfAsjbXZxw8HeqcSX2nb1KwdKG3skk2VikHDDHCRU2wy",
+      "name": "geetha",
+      "confirm": "geetha@123",
+      "id": 19
+    },
+    {
+      "email": "geeth@gmail.com",
+      "password": "$2a$10$btZHx68jicuN0F7LO3V64uRRKRLafeJz7d3YkTUZes5jMDGFvWYPm",
+      "name": "sai geetha",
+      "confirm": "geetha@123",
+      "id": 20
+    },
+    {
+      "email": "swaroopa@gmail.com",
+      "password": "$2a$10$zP4kezCxvYagvZJaCObE/.kLOkBpizBA59VR3Gl1OvpEGV47TfKf2",
+      "name": "swaroopa",
+      "confirm": "swaroopa@123",
+      "id": 21
+    },
+    {
+      "email": "ankitha@gmal.com",
+      "password": "$2a$10$pGG.BksFwEzSkxcPeMKDBuFXVNPd0ek6aTENkqqa5HLrAzDdeKBtO",
+      "name": "ankitha",
+      "confirm": "ankitha@123",
+      "id": 22
     }
   ],
   "products": []

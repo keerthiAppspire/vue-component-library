@@ -18,10 +18,15 @@ const routes = [
   },
   { path: '/forbidden', name: 'forbidden' , component: ()=> import('@/views/ForbiddenView.vue') },
   
-  
   { path: '/posts', name: 'posts', component: () => import('@/views/PostsView.vue') },
   
-  { path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('@/views/NotFoundView.vue') }
+  { path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('@/views/NotFoundView.vue') },
+
+  {
+  path: '/register',
+  name: 'register',
+  component: () => import('@/views/RegisterationForm.vue')
+},
 ]
 const router =  createRouter({
   history: createWebHistory(),

@@ -20,7 +20,8 @@ async function submit(){
         router.replace(route.query.redirect || '/dashboard')
     }
     catch(err){
-        console.error('login error',err)
+        console.error('login status:', err.response?.status)
+console.error('login response:', err.response?.data)
         if (err.response?.status===422){
             errors.value=err.response.data.errors
         }

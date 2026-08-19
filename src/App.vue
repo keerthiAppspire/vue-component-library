@@ -1,7 +1,8 @@
 <script setup>
-import FieldForm from './components/FieldForm.vue';
+import BaseToast from '@/components/ui/BaseToast.vue'
 </script>
 
 <template>
-  <FieldForm />
+  <RouterView />
+  <BaseToast />
 </template>
